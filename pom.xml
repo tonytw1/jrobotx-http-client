@@ -50,7 +50,12 @@
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.8</version>
+			<version>1.2.8</version>	
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.1-alpha1</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>		
