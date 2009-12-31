@@ -6,6 +6,7 @@ import java.net.URL;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -14,9 +15,15 @@ import org.apache.log4j.Logger;
 public class HttpClientInputStreamFactory implements URLInputStreamFactory {
 
 	private static final Logger LOG = Logger.getLogger(HttpClientInputStreamFactory.class);
+
+	private static final int HTTP_TIMEOUT = 10000;
 		
-	public InputStream openStream(URL url) throws IOException {
-		HttpClient httpClient = new DefaultHttpClient();
+	public InputStream openStream(URL url) throws IOException {		
+		return fetchUrl(url);
+	}
+
+	private InputStream fetchUrl(URL url) throws IOException, ClientProtocolException {
+		HttpClient httpClient = setupClient();
 		
 		HttpGet get = new HttpGet(url.toString());
 		HttpResponse response = httpClient.execute(get);
@@ -29,6 +36,10 @@ public class HttpClientInputStreamFactory implements URLInputStreamFactory {
 		return null;
 	}
 
+	private HttpClient setupClient() {
+		HttpClient httpClient = new DefaultHttpClient();
+		httpClient.getParams().setParameter("http.socket.timeout", new Integer(HTTP_TIMEOUT));
+		return httpClient;
+	}
 	
-
 }
