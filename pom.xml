@@ -24,17 +24,7 @@
 			<organizationUrl>http://www.trigonic.com/</organizationUrl>
 		</developer>
 	</developers>
-	<scm>
-		<connection>scm:svn:https://jrobotx.svn.sourceforge.net/svnroot/jrobotx/trunk/</connection>
-		<developerConnection>scm:svn:https://jrobotx.svn.sourceforge.net/svnroot/jrobotx/trunk/</developerConnection>
-		<url>http://jrobotx.svn.sourceforge.net/viewvc/jrobotx/trunk</url>
-	</scm>
-	<distributionManagement>
-		<site>
-			<id>sourceforge.net</id>
-			<url>scp://shell.sourceforge.net/home/groups/j/jr/jrobotx/htdocs</url>
-		</site>
-	</distributionManagement>
+	
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -48,11 +38,6 @@
 			<version>1.4</version>
 		</dependency>
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.15</version>
-		</dependency>
-		<dependency>
 			<groupId>org.easymock</groupId>
 			<artifactId>easymock</artifactId>
 			<version>2.4</version>
@@ -62,7 +47,16 @@
 			<artifactId>easymockclassextension</artifactId>
 			<version>2.4</version>
 		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.8</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>		
 	</dependencies>
+	
+	
 	<build>
 		<plugins>
 			<plugin>
